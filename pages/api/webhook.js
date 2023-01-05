@@ -4,7 +4,7 @@ import axios from 'axios';
 const token = process.env.WHATSAPP_TOKEN;
 
 export default function handler(req, res) {
-  if (req.method == 'GET') {
+  if (req?.method == 'GET') {
 
     const verify_token = process.env.VERIFY_TOKEN;
 
