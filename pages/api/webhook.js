@@ -4,7 +4,6 @@ import axios from 'axios';
 const token = process.env.WHATSAPP_TOKEN;
 
 export default function handler(req, res) {
-  console.log(req);
   if (req.method == 'POST') {
     let body = req.body;
     console.log(req);
