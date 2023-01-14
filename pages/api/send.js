@@ -13,15 +13,36 @@ export default function handler(req, res) {
       'Content-Type': 'application/json'
     },
     data: {
-      messaging_product: 'whatsapp',
-      to: '919546557824',
-      type: 'template',
-      template: {
-        name: 'hello_world',
-        language: {
-          code: 'en_US'
+      messaging_product: "whatsapp",
+      to: from,
+      type: "interactive",
+      interactive: {
+        type: "list",
+        headers: {
+          text: "When Where What - All in one link for calendars",
+        },
+        body: {
+          text: "When Where What - All in one link for calendars",
+        },
+        footer: {
+          text: "message from WhenWhereWhat.one",
+        },
+        action: {
+          buttons: "Call to Action",
+          sections: [
+            {
+              title: "WhenWhereWhat.one",
+              rows: [
+                {
+                  id: "1",
+                  title: "titke goes here",
+                  description: "description goes here",
+                }
+              ]
+            }
+          ]
         }
-      }
+      },
     }
   })
     .then(response => {
