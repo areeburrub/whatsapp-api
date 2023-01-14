@@ -40,41 +40,52 @@ export default function handler(req, res) {
     let phone_number_id =req.body.entry[0].changes[0].value.metadata.phone_number_id;
     let from = req.body.entry[0].changes[0].value.messages[0].from; // extract the phone number from the webhook payload
     let msg_body = req.body.entry[0].changes[0].value.messages[0].text.body; // extract the message text from the webhook payload
+
+
+        var data = (number) => JSON.stringify({
+          "messaging_product": "whatsapp",
+          "recipient_type": "individual",
+          "to": number,
+          "type": "interactive",
+          "interactive": {
+            "type": "list",
+            "header": {
+              "type": "text",
+              "text": "When Where What - Reminder Bot" 
+            },
+            "body": {
+              "text": "This is the reminder bot working for WhenWhereWhat here to remind you of your upcoming events you have saved with us. https://wh3.link/testevent"
+            },
+            "footer": {
+              "text": "WhenWhereWhat.one"
+            },
+            "action": {
+              "button": "Change Reminder Settings",
+              "sections": [
+                {
+                  "title": "Reminder Settings",
+                  "rows": [
+                    {
+                      "id": "osmdfk",
+                      "title": "1 Day",
+                      "description": "Only Remind Me 1 Day Before"
+                    },
+                    {
+                      "id": "mesdkfme",
+                      "title": "1 Hour",
+                      "description": "Only Remind Me 1 Hour Before"
+                    }
+                  ]
+                }
+              ]
+            }
+          }
+        });
+
     axios({
       method: "POST", // Required, HTTP method, a string, e.g. POST, GET
       url:"https://graph.facebook.com/v12.0/" +phone_number_id +"/messages?access_token=" +token,
-      data: {
-        messaging_product: "whatsapp",
-        to: from,
-        type: "interactive",
-        interactive: {
-          type: "list",
-          headers: {
-            text: "When Where What - All in one link for calendars",
-          },
-          body: {
-            text: "When Where What - All in one link for calendars",
-          },
-          footer: {
-            text: "message from WhenWhereWhat.one",
-          },
-          action: {
-            buttons: "Call to Action",
-            sections: [
-              {
-                title: "WhenWhereWhat.one",
-                rows:[
-                  {
-                    id: "1",
-                    title: "titke goes here",
-                    description: "description goes here",
-                  }
-                ]
-              }
-            ]
-          }
-       },
-      },
+      data: data(from),
       headers: { "Content-Type": "application/json" },
     }).then((response) => {
       console.log(response.data);
