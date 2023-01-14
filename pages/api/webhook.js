@@ -46,7 +46,31 @@ export default function handler(req, res) {
       data: {
         messaging_product: "whatsapp",
         to: from,
-        text: { body: "Ack: " + msg_body },
+        type: "interactive",
+        interactive: {
+          type: "list",
+          headers: {
+            text: "When Where What - All in one link for calendars",
+          },
+          footer: {
+            text: "message from WhenWhereWhat.one",
+          },
+          body: {
+            text: "When Where What - All in one link for calendars",
+          },
+
+          action: {
+            buttons: [
+              {
+                type: "reply",
+                reply:{
+                  title: "WhenWhereWhat.one",
+                  id: "whenwherewhat-website",
+                }
+              }
+            ]
+          }
+       },
       },
       headers: { "Content-Type": "application/json" },
     }).then((response) => {
