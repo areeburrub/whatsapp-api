@@ -31,8 +31,8 @@ export default function handler(req, res) {
 
     console.log(req);
     // Check the Incoming webhook message
-    //console.log(JSON.stringify(req.body, null, 2));
-    res.status(200).json({ result: req });
+    console.log(JSON.stringify(req.body, null, 2));
+    res.status(200).json({ result: req.body });
 
     // info on WhatsApp text message payload: https://developers.facebook.com/docs/whatsapp/cloud-api/webhooks/payload-examples#text-messages
     // if (req.body.object) {
