@@ -52,12 +52,27 @@ export default function handler(req, res) {
           headers: {
             text: "When Where What - All in one link for calendars",
           },
-          footer: {
-            text: "message from WhenWhereWhat.one",
-          },
           body: {
             text: "When Where What - All in one link for calendars",
           },
+          footer: {
+            text: "message from WhenWhereWhat.one",
+          },
+          action: {
+            buttons: "Call to Action",
+            sections: [
+              {
+                title: "WhenWhereWhat.one",
+                rows:[
+                  {
+                    id: "1",
+                    title: "titke goes here",
+                    description: "description goes here",
+                  }
+                ]
+              }
+            ]
+          }
        },
       },
       headers: { "Content-Type": "application/json" },
