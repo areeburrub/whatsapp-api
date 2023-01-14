@@ -56,7 +56,7 @@ export default function handler(req, res) {
       res.status(400).json({ data: "success", error: error });
     });
   }
-      res.send(200).json({ data: JSON.stringify(req.body, null, 2) });
+      res.send(200);
 }
 else{
   console.log(JSON.stringify(req.body, null, 2));
