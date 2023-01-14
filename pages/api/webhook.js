@@ -58,18 +58,6 @@ export default function handler(req, res) {
           body: {
             text: "When Where What - All in one link for calendars",
           },
-
-          action: {
-            buttons: [
-              {
-                type: "reply",
-                reply:{
-                  title: "WhenWhereWhat.one",
-                  id: "whenwherewhat-website",
-                }
-              }
-            ]
-          }
        },
       },
       headers: { "Content-Type": "application/json" },
