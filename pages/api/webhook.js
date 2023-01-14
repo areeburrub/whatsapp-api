@@ -57,10 +57,10 @@ export default function handler(req, res) {
               "text": "This is the reminder bot working for WhenWhereWhat here to remind you of your upcoming events you have saved with us. https://wh3.link/testevent"
             },
             "footer": {
-              "text": "WhenWhereWhat.one"
+              "text": "WhenWhereWhat"
             },
             "action": {
-              "button": "Change Reminder Settings",
+              "button": "Reminder Settings",
               "sections": [
                 {
                   "title": "Reminder Settings",

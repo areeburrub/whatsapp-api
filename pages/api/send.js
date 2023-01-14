@@ -5,60 +5,45 @@ const token = process.env.WHATSAPP_TOKEN;
 
 export default function handler(req, res) {
 
-  var data = (number) => JSON.stringify({
-    "messaging_product": "whatsapp",
-    "recipient_type": "individual",
-    "to": number,
-    "type": "interactive",
-    "interactive": {
-      "type": "list",
-      "header": {
-        "type": "text",
-        "text": "<HEADER_TEXT>"
-      },
-      "body": {
-        "text": "<BODY_TEXT>"
-      },
-      "footer": {
-        "text": "<FOOTER_TEXT>"
-      },
-      "action": {
-        "button": "<BUTTON_TEXT>",
-        "sections": [
-          {
-            "title": "<LIST_SECTION_1_TITLE>",
-            "rows": [
-              {
-                "id": "<LIST_SECTION_1_ROW_1_ID>",
-                "title": "<SECTION_1_ROW_1_TITLE>",
-                "description": "<SECTION_1_ROW_1_DESC>"
-              },
-              {
-                "id": "<LIST_SECTION_1_ROW_2_ID>",
-                "title": "<SECTION_1_ROW_2_TITLE>",
-                "description": "<SECTION_1_ROW_2_DESC>"
-              }
-            ]
-          },
-          {
-            "title": "<LIST_SECTION_2_TITLE>",
-            "rows": [
-              {
-                "id": "<LIST_SECTION_2_ROW_1_ID>",
-                "title": "<SECTION_2_ROW_1_TITLE>",
-                "description": "<SECTION_2_ROW_1_DESC>"
-              },
-              {
-                "id": "<LIST_SECTION_2_ROW_2_ID>",
-                "title": "<SECTION_2_ROW_2_TITLE>",
-                "description": "<SECTION_2_ROW_2_DESC>"
-              }
-            ]
+        var data = (number) => JSON.stringify({
+          "messaging_product": "whatsapp",
+          "recipient_type": "individual",
+          "to": number,
+          "type": "interactive",
+          "interactive": {
+            "type": "list",
+            "header": {
+              "type": "text",
+              "text": "When Where What - Reminder Bot" 
+            },
+            "body": {
+              "text": "This is the reminder bot working for WhenWhereWhat here to remind you of your upcoming events you have saved with us. https://wh3.link/testevent"
+            },
+            "footer": {
+              "text": "WhenWhereWhat"
+            },
+            "action": {
+              "button": "Reminder Settings",
+              "sections": [
+                {
+                  "title": "Reminder Settings",
+                  "rows": [
+                    {
+                      "id": "osmdfk",
+                      "title": "1 Day",
+                      "description": "Only Remind Me 1 Day Before"
+                    },
+                    {
+                      "id": "mesdkfme",
+                      "title": "1 Hour",
+                      "description": "Only Remind Me 1 Hour Before"
+                    }
+                  ]
+                }
+              ]
+            }
           }
-        ]
-      }
-    }
-  });
+        });
   
   axios({
     method: 'post',
