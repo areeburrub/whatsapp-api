@@ -28,11 +28,6 @@ export default function handler(req, res) {
    
   }
   else{
-
-    console.log(req);
-    // Check the Incoming webhook message
-    console.log(JSON.stringify(req.body, null, 2));
-
     //info on WhatsApp text message payload: https://developers.facebook.com/docs/whatsapp/cloud-api/webhooks/payload-examples#text-messages
     if (req.body.object) {
       if (
@@ -63,7 +58,6 @@ export default function handler(req, res) {
         });
 
       }
-      res.status(200).json({ data: 'success' });
     } else {
       // Return a '404 Not Found' if event is not from a WhatsApp API
       res.status(404).json({ data: 'error' });
