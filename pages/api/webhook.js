@@ -28,7 +28,6 @@ export default function handler(req, res) {
    
   }
   else{
-    console.log(JSON.stringify(req.body, null, 2));
     if (req.body.object) {
       if (
         req.body.entry &&
@@ -57,9 +56,10 @@ export default function handler(req, res) {
       res.status(400).json({ data: "success", error: error });
     });
   }
-  res.send(200).json({ data: req.body });
+      res.send(200).json({ data: JSON.stringify(req.body, null, 2) });
 }
 else{
+  console.log(JSON.stringify(req.body, null, 2));
   res.status(400).json({ data: "success", error: "no object" });
 }
   }
